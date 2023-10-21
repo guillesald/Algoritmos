@@ -2,7 +2,7 @@ from datetime import datetime
 from arbolavl import ArbolAVL
 
 
-class RegistroTemperaturas:
+class Temperaturas_DB:
     def __init__(self):
         # Crea una instancia de la clase ArbolAVL
         self.arbol_temperaturas = ArbolAVL()
@@ -63,7 +63,7 @@ print('\n')
 
 # Ejemplo de uso 
 if __name__ == "__main__":
-    base_datos = RegistroTemperaturas()
+    base_datos = Temperaturas_DB()
 
     # Guardar temperaturas
     base_datos.guardar_temperatura(22.5, "15/10/2023")
