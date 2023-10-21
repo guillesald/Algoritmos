@@ -61,7 +61,7 @@ print('\n')
 
 
 
-# Ejemplo de uso del programa
+# Ejemplo de uso 
 if __name__ == "__main__":
     base_datos = RegistroTemperaturas()
 
@@ -77,7 +77,7 @@ if __name__ == "__main__":
     base_datos.guardar_temperatura(26.5, "23/10/2023")
     base_datos.guardar_temperatura(21.4, "24/10/2023")
 
-    # Consultar temperaturas
+    # Consultar temperatura especifica
     print("Temperatura el 15/10/2023:", base_datos.devolver_temperatura("15/10/2023"))
 
     # Consultar temperaturas en un rango
