@@ -20,7 +20,7 @@ class MonticuloBinario:
             self.infiltAbajo(i)
 
 
-    def infiltArriba(self,i): #infiltra un nuevo ítem hacia arriba en el árbol hasta donde sea necesario para mantener la propiedad de montículo.
+    def infiltArriba(self,i): 
      while i // 2 > 0:
       if self.listaMonticulo[i] < self.listaMonticulo[i // 2]:
          tmp = self.listaMonticulo[i // 2]
@@ -56,7 +56,7 @@ class MonticuloBinario:
         self.listaMonticulo[1] = self.listaMonticulo[self.tamanoActual]
         self.tamanoActual = self.tamanoActual - 1
         self.listaMonticulo.pop()
-        self.infiltAbajo(1)  # Aquí es donde se produce el problema
+        self.infiltAbajo(1) 
 
         return valorSacado   
     
