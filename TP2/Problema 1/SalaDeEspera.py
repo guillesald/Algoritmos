@@ -1,7 +1,7 @@
-from MonticuloBinario import MonticuloBinario
+from Modulos.MonticuloBinario import MonticuloBinario
 import time
 import datetime
-import pacientes as pac
+import Modulos.pacientes as pac
 import random
 
 
