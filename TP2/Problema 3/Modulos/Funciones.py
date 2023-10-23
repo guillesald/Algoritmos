@@ -99,7 +99,7 @@ def warshall(grafo, inicio, fin):
         for vecino in grafo.obtenerVertice(nodo).conexiones:
             i = mapeo_nodos[nodo]
             j = mapeo_nodos[vecino.Id]
-            distancias[i][j] = 1  # Puedes ajustar el peso de la conexión si es necesario
+            distancias[i][j] = 1 
 
     for k in range(n):
         for i in range(n):
@@ -123,7 +123,7 @@ def warshall_lista(grafo, inicio):
         for vecino in grafo.obtenerVertice(nodo).conexiones:
             i = mapeo_nodos[nodo]
             j = mapeo_nodos[vecino.Id]
-            distancias[i][j] = 1  # Puedes ajustar el peso de la conexión si es necesario
+            distancias[i][j] = 1  
 
     for k in range(n):
         for i in range(n):
