@@ -67,9 +67,7 @@ class JuegoGuerra:
     def repartir_cartas(self):
         for i in range(1, 53):
             carta = self.mazo.sacar_arriba()
-            # Se reparte de una forma intercalada, por lo que nunca se le 
-            # va a repartir 2 cartas seguidas a un mismo jugador
-            if i % 2 == 0:
+            if i % 2 == 0: #Se reparte intercalado
                 self.mazo_jugador_1.poner_arriba(carta)
             else:
                 self.mazo_jugador_2.poner_arriba(carta)
