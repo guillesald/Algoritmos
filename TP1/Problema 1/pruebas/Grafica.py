@@ -39,14 +39,14 @@ z = [i ** 1.9 / 5000000 for i in range(1000)]
 plt.figure(figsize=(10, 5))
 
 plt.subplot(1, 2, 1)
-plt.plot(x, y, label='Alg. Inserción')
+plt.plot(x, y, label='Alg. Ordenamiento')
 plt.xlabel('Muestras')
 plt.ylabel('Tiempos')
-plt.title('Tiempos para algoritmo de inserción')
+plt.title('Tiempos para algoritmo de Ordenamiento')
 plt.legend()
 
 plt.subplot(1, 2, 2)
-plt.plot(x, y, color='blue', label='Alg. Alg. Inserción')
+plt.plot(x, y, color='blue', label='Alg. Ordenamiento')
 plt.plot(x, z, color='red', label='x**2')
 plt.xlabel('N muestras')
 plt.ylabel('Tiempos')
