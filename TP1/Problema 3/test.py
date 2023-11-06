@@ -4,7 +4,7 @@ class TestOrdenamientoExterno(unittest.TestCase):
     
     def test_ordenamiento(self):
         """
-        Compruebo que la cantidad de de datos sea la misma, y que los datos
+        Compruebo que la cantidad de de datos sea la misma y que los datos
         sean de valor creciente.
         """
         
