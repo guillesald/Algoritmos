@@ -84,29 +84,6 @@ def dijkstra_cuello(unGrafo, inicio):
                 verticeSiguiente.asignarPredecesor(verticeActual)
                 verticeSiguiente._distancia = min(verticeActual._distancia, ponderacion)
 
-def warshall(grafo, inicio, fin):
-    # Implementa el algoritmo de Warshall para determinar si hay un camino entre dos vértices en un grafo.
-    mapeo_nodos = {}
-    indice = 0
-    for nodo in grafo.obtenerVertices():
-        mapeo_nodos[nodo] = indice
-        indice += 1
-
-    n = len(grafo.obtenerVertices())
-    distancias = [[float('inf') if i != j else 0 for j in range(n)] for i in range(n)]
-
-    for nodo in grafo.obtenerVertices():
-        for vecino in grafo.obtenerVertice(nodo).conexiones:
-            i = mapeo_nodos[nodo]
-            j = mapeo_nodos[vecino.Id]
-            distancias[i][j] = 1 
-
-    for k in range(n):
-        for i in range(n):
-            for j in range(n):
-                distancias[i][j] = min(distancias[i][j], distancias[i][k] + distancias[k][j])
-
-    return distancias[mapeo_nodos[inicio]][mapeo_nodos[fin]] != float('inf')
 
 def warshall_lista(grafo, inicio):
     # Implementa el algoritmo de Warshall para determinar los nodos alcanzables desde un vértice de inicio en un grafo.
