@@ -15,40 +15,18 @@ class Vertice:
     def __str__(self):
         # Devuelve una representación en forma de cadena del vértice
         return str(self._id) + ' conectadoA: ' + str([x._id for x in self._conectadoA])
-
-    @property
-    def conexiones(self):
+    
+    def obtenerId(self):
+        return self._id
+    
+    def obtenerConexiones(self):
         # Devuelve los vértices vecinos del vértice actual
         return self._conectadoA.keys()
-
-    @property
-    def Id(self):
-        # Devuelve el identificador del vértice
-        return self._id
-
-    @property
-    def distancia(self):
-        # Devuelve la distancia del vértice
-        return self._distancia
-
-    def ponderacion(self, vecino):
+      
+    def obtenerPonderacion(self, vecino):
         # Devuelve la ponderación de la conexión entre el vértice actual y el vértice vecino
         return self._conectadoA[vecino]
-
-    def setDistancia(self, valor):
-        # Establece la distancia del vértice
-        self._distancia = valor
-
-    @property
-    def predecesor(self):
-        # Devuelve el predecesor del vértice
-        return self._predecesor
-
-    @predecesor.setter
-    def predecesor(self, predecesor):
-        # Establece el predecesor del vértice
-        self._predecesor = predecesor
-
+    
     def asignarDistancia(self, dist):
         # Asigna una distancia al vértice
         self._distancia = dist
@@ -57,14 +35,10 @@ class Vertice:
         # Devuelve la distancia del vértice
         return self._distancia
 
-    def obtenerConexiones(self):
-        # Devuelve los vértices vecinos del vértice actual
-        return self._conectadoA.keys()
-
-    def obtenerPonderacion(self, vecino):
-        # Devuelve la ponderación de la conexión entre el vértice actual y el vértice vecino
-        return self._conectadoA[vecino]
-
     def asignarPredecesor(self, predecesor):
         # Asigna un predecesor al vértice
         self._predecesor = predecesor
+
+    def obtenerPredecesor(self):
+        # Devuelve el predecesor del vértice
+        return self._predecesor

@@ -40,49 +40,6 @@ class NodoArbol:
         # Verifica si el nodo tiene ambos hijos
         return self.hijoDerecho and self.hijoIzquierdo
 
-    def encontrarSucesor(self):
-        # Encuentra el sucesor del nodo actual
-        suc = None
-        if self.tieneHijoDerecho():
-            suc = self.hijoDerecho.encontrarMin()
-        else:
-            if self.padre:
-                if self.esHijoIzquierdo():
-                    suc = self.padre
-                else:
-                    self.padre.hijoDerecho = None
-                    suc = self.padre.encontrarSucesor()
-                    self.padre.hijoDerecho = self
-        return suc
-
-    def empalmar(self):
-        # Empalma el nodo actual en el árbol
-        if self.esHoja():
-            if self.esHijoIzquierdo():
-                self.padre.hijoIzquierdo = None
-            else:
-                self.padre.hijoDerecho = None
-        elif self.tieneAlgunHijo():
-            if self.tieneHijoIzquierdo():
-                if self.esHijoIzquierdo():
-                    self.padre.hijoIzquierdo = self.hijoIzquierdo
-                else:
-                    self.padre.hijoDerecho = self.hijoIzquierdo
-                self.hijoIzquierdo.padre = self.padre
-            else:
-                if self.esHijoIzquierdo():
-                    self.padre.hijoIzquierdo = self.hijoDerecho
-                else:
-                    self.padre.hijoDerecho = self.hijoDerecho
-                self.hijoDerecho.padre = self.padre
-
-    def encontrarMin(self):
-        # Encuentra el nodo con el valor mínimo en el subárbol
-        actual = self
-        while actual.tieneHijoIzquierdo():
-            actual = actual.hijoIzquierdo
-        return actual
-
     def reemplazarDatoDeNodo(self, clave, valor, hizq, hder):
         # Reemplaza los datos del nodo con nuevos valores
         self.clave = clave
@@ -189,8 +146,8 @@ class ArbolBinarioBusqueda:
                 nodoActual.padre.hijoDerecho = None
         elif nodoActual.tieneAmbosHijos():
             # Nodo tiene dos hijos
-            sucesor = nodoActual.encontrarSucesor()
-            sucesor.empalmar()
+            sucesor = self.encontrarSucesor(nodoActual)
+            self.empalmar(sucesor)
             nodoActual.clave = sucesor.clave
             nodoActual.cargaUtil = sucesor.cargaUtil
         else:
@@ -220,4 +177,45 @@ class ArbolBinarioBusqueda:
                                                      nodoActual.hijoDerecho.hijoIzquierdo,
                                                      nodoActual.hijoDerecho.hijoDerecho)
 
-
+    def encontrarSucesor(self, nodo):
+        # Encuentra el sucesor del nodo actual
+        suc = None
+        if nodo.tieneHijoDerecho():
+            suc = self.encontrarMin(nodo.hijoDerecho)
+        else:
+            if nodo.padre:
+                if nodo.esHijoIzquierdo():
+                    suc = nodo.padre
+                else:
+                    nodo.padre.hijoDerecho = None
+                    suc = self.encontrarSucesor(nodo.padre)
+                    nodo.padre.hijoDerecho = nodo
+        return suc
+    
+    def encontrarMin(self, nodo):
+      #Encuentra el menor valor del subarbol izquierdo
+      actual = nodo
+      while actual.tieneHijoIzquierdo():
+          actual = actual.hijoIzquierdo
+      return actual
+    
+    def empalmar(self, nodo):
+        # Empalma el nodo actual en el árbol
+        if nodo.esHoja():
+            if nodo.esHijoIzquierdo():
+                nodo.padre.hijoIzquierdo = None
+            else:
+                nodo.padre.hijoDerecho = None
+        elif nodo.tieneAlgunHijo():
+            if nodo.tieneHijoIzquierdo():
+                if nodo.esHijoIzquierdo():
+                    nodo.padre.hijoIzquierdo = nodo.hijoIzquierdo
+                else:
+                    nodo.padre.hijoDerecho = nodo.hijoIzquierdo
+                nodo.hijoIzquierdo.padre = nodo.padre
+            else:
+                if nodo.esHijoIzquierdo():
+                    nodo.padre.hijoIzquierdo = nodo.hijoDerecho
+                else:
+                    nodo.padre.hijoDerecho = nodo.hijoDerecho
+                nodo.hijoDerecho.padre = nodo.padre

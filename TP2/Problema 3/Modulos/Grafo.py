@@ -43,10 +43,4 @@ class Grafo:
         # Devuelve un iterador que permite recorrer los objetos vértice del grafo.
         return iter(self._listaVertices.values())
 
-    def decrementarClave(self, valor, nuevaClave):
-        # Disminuye la clave de un valor específico en el montículo binario y ajusta el montículo según sea necesario.
-        for i, (clave, v) in enumerate(self.listaMonticulo[1:], start=1):
-            if v == valor:
-                self.listaMonticulo[i] = (nuevaClave, v)
-                self.infiltArriba(i)
-                return
+
