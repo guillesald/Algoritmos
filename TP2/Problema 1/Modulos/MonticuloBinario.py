@@ -26,13 +26,19 @@ class MonticuloBinario:
         """
         return self.tamanoActual
     
-    def ordenarMonticulo(self):
-        """
-        Ordena el montículo para cumplir con la propiedad de montículo binario.
-        """
-        for i in range(self.tamanoActual // 2, 0, -1):
-            self.infiltAbajo(i)
 
+    def infiltAbajo(self, i):
+        """
+        Infiltra un elemento hacia abajo en el árbol para mantener la propiedad de montículo.
+        """
+        while (i * 2) <= self.tamanoActual:
+            hm = self.hijoMin(i)
+            if self.listaMonticulo[i] > self.listaMonticulo[hm]:
+                tmp = self.listaMonticulo[i]
+                self.listaMonticulo[i] = self.listaMonticulo[hm]
+                self.listaMonticulo[hm] = tmp
+            i = hm
+            
     def infiltArriba(self, i):
         """
         Infiltra un nuevo ítem hacia arriba en el árbol para mantener la propiedad de montículo.
@@ -52,17 +58,6 @@ class MonticuloBinario:
         self.tamanoActual = self.tamanoActual + 1
         self.infiltArriba(self.tamanoActual)
     
-    def infiltAbajo(self, i):
-        """
-        Infiltra un elemento hacia abajo en el árbol para mantener la propiedad de montículo.
-        """
-        while (i * 2) <= self.tamanoActual:
-            hm = self.hijoMin(i)
-            if self.listaMonticulo[i] > self.listaMonticulo[hm]:
-                tmp = self.listaMonticulo[i]
-                self.listaMonticulo[i] = self.listaMonticulo[hm]
-                self.listaMonticulo[hm] = tmp
-            i = hm
 
     def hijoMin(self, i):
         """

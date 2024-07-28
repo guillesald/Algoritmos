@@ -8,7 +8,7 @@ apellidos = ['Perez', 'Colman', 'Rodriguez', 'Juarez', 'García', 'Belgrano', 'M
 niveles_de_riesgo = [1, 2, 3]
 descripciones_de_riesgo = ['crítico', 'moderado', 'bajo']
 # probabilidades de aparición de cada tipo de paciente
-probabilidades = [0.1, 0.3, 0.6] 
+probabilidades = [0.3, 0.3, 0.4] 
 
 class Paciente:
     def __init__(self):
@@ -50,6 +50,7 @@ class Paciente:
         cad += self.__apellido + '\t -> '
         cad += str(self.__riesgo) + '-' + self.__descripcion
         return cad
+
 
         
         
